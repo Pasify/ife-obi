@@ -5,6 +5,7 @@ import { ThemeProvider } from '@/components/theme-provider'
 import { ContactProvider } from '@/components/contact-context'
 import { AmbientEffects } from '@/components/ambient-effects'
 import { ScrollProgress } from '@/components/scroll-progress'
+import { Navbar } from '@/components/navbar'
 import {
   GITHUB_URL,
   LINKEDIN_URL,
@@ -89,7 +90,10 @@ export default function RootLayout({
           </a>
           <ScrollProgress />
           <AmbientEffects />
-          <ContactProvider>{children}</ContactProvider>
+          <ContactProvider>
+            <Navbar />
+            {children}
+          </ContactProvider>
         </ThemeProvider>
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>

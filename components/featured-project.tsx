@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import { ExternalLink } from 'lucide-react'
 import { GithubIcon } from '@/components/github-icon'
 import type { FeaturedProject } from '@/data/projects'
@@ -10,16 +11,15 @@ type Props = {
 }
 
 export function FeaturedProjectRow({ project, side, hasImage }: Props) {
-  const { title, live, github, image, tools, description } = project
+  const { slug, title, live, github, image, tools, description } = project
+  const caseHref = `/projects/${slug}`
 
   return (
     <li className="featured" data-side={side}>
-      <a
-        href={live}
-        target="_blank"
-        rel="noopener noreferrer"
+      <Link
+        href={caseHref}
         className="featured-media"
-        aria-label={`${title} live site`}
+        aria-label={`${title} case study`}
         tabIndex={-1}
       >
         {hasImage ? (
@@ -34,13 +34,13 @@ export function FeaturedProjectRow({ project, side, hasImage }: Props) {
         ) : (
           <span className="featured-placeholder">{title}</span>
         )}
-      </a>
+      </Link>
 
       <div className="featured-text">
         <h3>
-          <a href={live} target="_blank" rel="noopener noreferrer" className="featured-title">
+          <Link href={caseHref} className="featured-title">
             {title}
-          </a>
+          </Link>
         </h3>
         <div className="featured-desc glass">
           <p>{description}</p>
@@ -71,6 +71,11 @@ export function FeaturedProjectRow({ project, side, hasImage }: Props) {
           >
             <ExternalLink size={23} aria-hidden="true" />
           </a>
+        </div>
+        <div className="featured-case-wrap">
+          <Link href={caseHref} className="case-link" aria-label={`Read the ${title} case study`}>
+            Read case study <span className="case-arrow" aria-hidden="true">{'→'}</span>
+          </Link>
         </div>
       </div>
     </li>

@@ -1,6 +1,7 @@
 'use client'
 
 import type { CSSProperties } from 'react'
+import Link from 'next/link'
 import { ExternalLink, FolderOpen } from 'lucide-react'
 import { GithubIcon } from '@/components/github-icon'
 import { ExpandAnnouncer, ExpandRegion, ExpandToggle } from '@/components/expand-toggle'
@@ -61,24 +62,14 @@ function OtherProjectCard({
   animate?: boolean
   style?: CSSProperties
 }) {
-  const { title, live, github, tools, description } = project
-  const primaryUrl = live ?? github
-
-  const openPrimary = () => {
-    if (primaryUrl) window.open(primaryUrl, '_blank', 'noopener,noreferrer')
-  }
-  const stop = (e: React.MouseEvent) => e.stopPropagation()
+  const { slug, title, live, github, tools, description } = project
 
   return (
-    <li
-      className={animate ? 'other-card expand-item' : 'other-card'}
-      style={style}
-      onClick={openPrimary}
-    >
+    <li className={animate ? 'other-card expand-item' : 'other-card'} style={style}>
       <div className="other-card-body glass">
         <div className="flex items-center justify-between">
           <FolderOpen size={35} className="text-cyan" aria-hidden="true" />
-          <div className="flex items-center gap-[25px]">
+          <div className="other-icons flex items-center gap-[25px]">
             {github && (
               <a
                 href={github}
@@ -86,7 +77,6 @@ function OtherProjectCard({
                 rel="noopener noreferrer"
                 aria-label={`${title} on GitHub`}
                 className="project-icon-link"
-                onClick={stop}
               >
                 <GithubIcon size={23} />
               </a>
@@ -98,7 +88,6 @@ function OtherProjectCard({
                 rel="noopener noreferrer"
                 aria-label={`${title} live site`}
                 className="project-icon-link"
-                onClick={stop}
               >
                 <ExternalLink size={23} aria-hidden="true" />
               </a>
@@ -108,25 +97,26 @@ function OtherProjectCard({
 
         <div>
           <h4 className="other-title">
-            {primaryUrl ? (
-              <a href={primaryUrl} target="_blank" rel="noopener noreferrer" onClick={stop}>
-                {title}
-              </a>
-            ) : (
-              title
-            )}
+            <Link href={`/projects/${slug}`} className="other-link">
+              {title}
+            </Link>
           </h4>
           <p className="other-desc">{description}</p>
         </div>
 
-        <p className="other-tools">
-          {tools.map((tool, i) => (
-            <span key={tool}>
-              {tool}
-              {i < tools.length - 1 ? ' ' : ''}
-            </span>
-          ))}
-        </p>
+        <div className="other-card-foot">
+          <p className="other-tools">
+            {tools.map((tool, i) => (
+              <span key={tool}>
+                {tool}
+                {i < tools.length - 1 ? ' ' : ''}
+              </span>
+            ))}
+          </p>
+          <p className="case-link other-cta" aria-hidden="true">
+            View project <span className="case-arrow">{'→'}</span>
+          </p>
+        </div>
       </div>
     </li>
   )
