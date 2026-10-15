@@ -13,7 +13,7 @@ function imageExists(src: string) {
 export function Projects() {
   return (
     <Section id="works" aria-labelledby="works-heading" className="projects">
-      <SectionHeading num="04" title="Some things I've built" id="works-heading" />
+      <SectionHeading num="05" title="Some things I've built" id="works-heading" />
 
       <ul className="featured-list">
         {featuredProjects.map((project, i) => (

@@ -8,6 +8,7 @@ import { About } from '@/components/about'
 import { Skills } from '@/components/skills'
 import { Projects } from '@/components/projects'
 import { Experience } from '@/components/experience'
+import { Certificates } from '@/components/certificates'
 
 const placeholders = [
   { num: '06', title: 'Get in touch' },
@@ -20,6 +21,7 @@ export default function Page() {
       <About />
       <Skills />
       <Experience />
+      <Certificates />
       <Projects />
       {placeholders.map(({ num, title }) => (
         <Section
