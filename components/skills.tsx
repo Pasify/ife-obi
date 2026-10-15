@@ -82,7 +82,7 @@ export function Skills() {
   return (
     <Section id="skills" aria-labelledby="heading-skills" className="skills">
       <SectionHeading num="02" title="Skills & tools" id="heading-skills" />
-      <p className="skills-intro">The tools I reach for to design, build and ship.</p>
+      <p className="skills-intro">What I reach for, day to day.</p>
       <div className="skills-grid">
         {categories.map((category, index) => (
           <SkillCard

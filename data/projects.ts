@@ -29,7 +29,7 @@ export const featuredProjects: FeaturedProject[] = [
     image: '/projects/easyly-card.png',
     tools: ['React.js', 'Turso (libSQL)', 'Vercel'],
     description:
-      'An ed-tech direct debit loan platform for teachers, turning repayment workflows into clear, step-by-step user journeys. Used by 100+ active users.',
+      'Direct debit loans for teachers, with repayment workflows reshaped into clear, step-by-step journeys.',
   },
   {
     title: 'Recipe Generation App',
@@ -37,7 +37,7 @@ export const featuredProjects: FeaturedProject[] = [
     image: '/projects/chef-claude.png',
     tools: ['React', 'TanStack Query', 'Hugging Face API'],
     description:
-      'A React app that uses the Hugging Face API and TanStack Query to generate recipes with AI from the ingredients you have.',
+      'Name your ingredients and an AI model, reached through Hugging Face and TanStack Query, writes the recipe.',
   },
   {
     title: 'RepoRover',
@@ -45,7 +45,7 @@ export const featuredProjects: FeaturedProject[] = [
     image: '/projects/reporover.png',
     tools: ['Vue.js', 'REST API'],
     description:
-      'A GitHub discovery app and my first Vue.js project, built around API integration and reactive state management.',
+      'Search and explore GitHub repositories. My first Vue.js project, centred on API integration and reactive state.',
   },
 ]
 
@@ -55,21 +55,21 @@ export const otherProjects: OtherProject[] = [
     live: 'https://finfuze-app.web.app/',
     tools: ['Firebase Auth', 'Firestore', 'JavaScript'],
     description:
-      'A financial account management app with Firebase Authentication and secure data storage.',
+      'Personal finance accounts, secured with Firebase Authentication.',
   },
   {
     title: 'FlixBox',
     live: 'https://flixboxx.netlify.app/',
     tools: ['React', 'Tailwind CSS'],
     description:
-      'A React movie search app with interactive search and playlist flows, responsive across devices.',
+      'Search for movies and curate playlists on any screen size.',
   },
   {
     title: 'Nim Game',
     github: 'https://github.com/Pasify/1-2-nim-game',
     tools: ['Java', 'Swing'],
     description:
-      'A Java Swing GUI for the Nim game with a custom AI strategy, undo/save/load, the observer pattern, and a full test plan with design documentation.',
+      'A Java Swing take on the classic game, with a custom AI opponent plus undo, save and load.',
   },
   {
     title: 'Bankist Website',
@@ -77,7 +77,7 @@ export const otherProjects: OtherProject[] = [
     github: 'https://github.com/Pasify/bankist-website',
     tools: ['HTML', 'CSS/SASS', 'JavaScript'],
     description:
-      'A visually appealing showcase of the Bankist banking app: account creation, easy navigation and fictional user testimonials.',
+      'A showcase site for the Bankist banking concept: sign-up flow, smooth navigation, sample testimonials.',
   },
   {
     title: 'Natours',
@@ -85,7 +85,7 @@ export const otherProjects: OtherProject[] = [
     github: 'https://github.com/Pasify/Natours-website',
     tools: ['HTML', 'CSS/SASS'],
     description:
-      'An interactive tour booking website with stunning destinations and detailed tour information.',
+      'Tour booking for adventure travel, with destination galleries and itinerary details.',
   },
   {
     title: 'Mapty',
@@ -93,7 +93,7 @@ export const otherProjects: OtherProject[] = [
     github: 'https://github.com/Pasify/mapty',
     tools: ['HTML', 'CSS/SASS', 'JavaScript'],
     description:
-      'A fitness tracking app that logs workouts on a map with duration, distance and statistics.',
+      'Log workouts on a map, then review distance and duration.',
   },
   {
     title: 'Homerr',
@@ -101,6 +101,6 @@ export const otherProjects: OtherProject[] = [
     github: 'https://github.com/Pasify/Homer-website',
     tools: ['HTML', 'CSS/SASS'],
     description:
-      'A modern real estate website with interactive features and a sleek browsing interface.',
+      'Property browsing with a sleek, interactive interface.',
   },
 ]

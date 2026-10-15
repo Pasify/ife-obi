@@ -174,7 +174,7 @@ export function ContactModal({ onClose }: { onClose: () => void }) {
           <>
             <header className="contact-header">
               <h2 id="contact-title" className="contact-title">
-                {'Say Hello 👋'}
+                {'Drop me a line 👋'}
               </h2>
               <p className="contact-subtitle">I usually reply within a day.</p>
             </header>

@@ -1,60 +1,66 @@
 'use client'
 
-import { useState } from 'react'
+import type { CSSProperties } from 'react'
 import { ExternalLink, FolderOpen } from 'lucide-react'
-import { Button } from '@/components/button'
 import { GithubIcon } from '@/components/github-icon'
-import { MessageModal } from '@/components/message-modal'
+import { ExpandAnnouncer, ExpandRegion, ExpandToggle } from '@/components/expand-toggle'
+import { useExpandable } from '@/hooks/use-expandable'
 import type { OtherProject } from '@/data/projects'
 
 const STEP = 3
 
 export function OtherProjects({ projects }: { projects: OtherProject[] }) {
-  const [count, setCount] = useState(STEP)
-  const [modalOpen, setModalOpen] = useState(false)
-  const [exhausted, setExhausted] = useState(false)
-
-  const handleShowMore = () => {
-    if (count < projects.length) {
-      setCount((c) => Math.min(c + STEP, projects.length))
-    } else {
-      setModalOpen(true)
-    }
-  }
-
-  const closeModal = () => {
-    setModalOpen(false)
-    setExhausted(true)
-  }
+  const expandable = useExpandable({
+    initial: STEP,
+    total: projects.length,
+    step: STEP,
+    describe: (shown, total) => `Showing ${shown} of ${total} projects`,
+  })
+  const { anchorRef, rendered, canToggle, itemStyle, announcement } = expandable
 
   return (
     <div className="other-projects">
-      <h3 className="other-heading">Other Projects</h3>
+      <h3 ref={anchorRef as React.RefObject<HTMLHeadingElement>} className="other-heading">
+        Other Projects
+      </h3>
 
       <ul className="other-grid">
-        {projects.slice(0, count).map((project, i) => (
-          <OtherProjectCard key={project.title} project={project} animate={i >= STEP} />
+        {projects.slice(0, STEP).map((project) => (
+          <OtherProjectCard key={project.title} project={project} />
         ))}
       </ul>
 
-      {!exhausted && (
-        <div className="flex justify-center">
-          <Button size="big" onClick={handleShowMore}>
-            Show more
-          </Button>
-        </div>
-      )}
-
-      {modalOpen && (
-        <MessageModal onClose={closeModal}>
-          {"Oops! That's all the projects I have for now. More projects coming soon! 👨🏼‍💻😉"}
-        </MessageModal>
+      {canToggle && (
+        <>
+          <ExpandRegion state={expandable}>
+            <ul className="other-grid other-grid-more">
+              {projects.slice(STEP, rendered).map((project, i) => (
+                <OtherProjectCard
+                  key={project.title}
+                  project={project}
+                  animate
+                  style={itemStyle(STEP + i)}
+                />
+              ))}
+            </ul>
+          </ExpandRegion>
+          <ExpandToggle state={expandable} showCounter />
+          <ExpandAnnouncer message={announcement} />
+        </>
       )}
     </div>
   )
 }
 
-function OtherProjectCard({ project, animate }: { project: OtherProject; animate: boolean }) {
+function OtherProjectCard({
+  project,
+  animate = false,
+  style,
+}: {
+  project: OtherProject
+  animate?: boolean
+  style?: CSSProperties
+}) {
   const { title, live, github, tools, description } = project
   const primaryUrl = live ?? github
 
@@ -64,7 +70,11 @@ function OtherProjectCard({ project, animate }: { project: OtherProject; animate
   const stop = (e: React.MouseEvent) => e.stopPropagation()
 
   return (
-    <li className={animate ? 'other-card about-appear' : 'other-card'} onClick={openPrimary}>
+    <li
+      className={animate ? 'other-card expand-item' : 'other-card'}
+      style={style}
+      onClick={openPrimary}
+    >
       <div className="other-card-body glass">
         <div className="flex items-center justify-between">
           <FolderOpen size={35} className="text-cyan" aria-hidden="true" />

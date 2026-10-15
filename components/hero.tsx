@@ -36,7 +36,7 @@ export function Hero() {
       </p>
       <p className="hero-desc hero-item" style={stagger(4)}>
         {
-          "I'm a full-stack developer with 3+ years of experience shipping web and mobile products with React, React Native and Node.js. I enjoy turning ideas into clean, fast, accessible interfaces, from discovery through launch."
+          'Three years across React, React Native and Node.js, turning ideas into fast, accessible interfaces, from first sketch to launch.'
         }
       </p>
       <div className="hero-actions hero-item" style={stagger(5)}>
@@ -44,7 +44,7 @@ export function Hero() {
           {'Find out more ↓'}
         </Button>
         <Button size="big" variant="outline" onClick={openContact}>
-          Say Hello!
+          {"Let's talk"}
         </Button>
       </div>
     </header>

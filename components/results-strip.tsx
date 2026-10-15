@@ -8,14 +8,14 @@ const stats = [
   {
     target: 3,
     suffix: '+',
-    label: 'Years shipping web & mobile products',
-    sentence: 'Over 3 years shipping web and mobile products',
+    label: 'Years shipping to production',
+    sentence: 'Over 3 years shipping to production',
   },
   {
     target: 100,
     suffix: '+',
-    label: "Users across live products I've built",
-    sentence: "Over 100 users across live products I've built",
+    label: 'Users across live projects',
+    sentence: 'Over 100 users across live projects',
   },
   {
     target: 25,
@@ -26,8 +26,8 @@ const stats = [
   {
     target: 5,
     suffix: '',
-    label: 'Developers led, delivered on schedule',
-    sentence: '5 developers led, delivered on schedule',
+    label: 'Developers led, on schedule',
+    sentence: '5 developers led, on schedule',
   },
 ]
 
