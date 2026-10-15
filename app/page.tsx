@@ -6,10 +6,10 @@ import { ThemeToggle } from '@/components/theme-toggle'
 import { Hero } from '@/components/hero'
 import { About } from '@/components/about'
 import { Skills } from '@/components/skills'
+import { Projects } from '@/components/projects'
 
 const placeholders = [
   { num: '03', title: 'Experience' },
-  { num: '04', title: 'Some things I have built' },
   { num: '05', title: 'Get in touch' },
 ]
 
@@ -19,6 +19,7 @@ export default function Page() {
       <Hero />
       <About />
       <Skills />
+      <Projects />
       {placeholders.map(({ num, title }) => (
         <Section
           key={num}
