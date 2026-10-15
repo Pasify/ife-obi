@@ -4,6 +4,7 @@ import { Button } from '@/components/button'
 import { ThemeToggle } from '@/components/theme-toggle'
 
 import { Hero } from '@/components/hero'
+import { About } from '@/components/about'
 
 const placeholders = [
   { num: '02', title: 'Experience' },
@@ -15,6 +16,7 @@ export default function Page() {
   return (
     <main id="content" className="shell">
       <Hero />
+      <About />
       {placeholders.map(({ num, title }) => (
         <Section
           key={num}

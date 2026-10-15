@@ -350,6 +350,169 @@
     }
   }
 
+  .about {
+    padding: 100px 0;
+  }
+  .about-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 30px;
+  }
+  .about-text {
+    display: grid;
+    row-gap: 20px;
+    font-weight: 400;
+    font-size: 17px;
+    color: var(--slate);
+  }
+  .about-text[hidden] {
+    display: none;
+  }
+  .about-more {
+    font: inherit;
+    color: var(--cyan);
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    text-decoration: underline;
+    text-decoration-style: wavy;
+    text-decoration-thickness: 1.5px;
+  }
+  .about-more:focus-visible {
+    outline: 2px solid var(--cyan);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+  .about-appear {
+    display: block;
+    animation: about-appear 0.3s ease-out both;
+  }
+  @keyframes about-appear {
+    from {
+      transform: scale(0.2);
+      opacity: 0.5;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  .about-tech {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-family: var(--font-mono), ui-monospace, monospace;
+    font-size: 17px;
+    /* Items are already cased; capitalize would turn "React.js" into "React.Js". */
+    text-transform: none;
+  }
+  .about-tech li {
+    flex: 0 0 50%;
+  }
+  .about-tech li::before {
+    content: '▹';
+    font-family: 'Segoe UI Symbol', 'DejaVu Sans', 'Noto Sans Symbols 2', ui-sans-serif, system-ui,
+      sans-serif;
+    color: var(--cyan);
+    font-size: 20px;
+    margin: 10px;
+  }
+
+  .about-photo {
+    --photo-overlay: linear-gradient(to right, rgba(105, 235, 252, 0.3), rgba(5, 221, 250, 0.3));
+    position: relative;
+    isolation: isolate;
+    justify-self: center;
+    width: 250px;
+    height: 350px;
+    border-radius: 5px;
+    outline: 2px solid var(--cyan);
+    transition: all 0.2s ease-in-out;
+  }
+  :root.light .about-photo {
+    --photo-overlay: linear-gradient(to right, rgba(8, 145, 178, 0.25), rgba(14, 116, 144, 0.25));
+  }
+  .about-photo::after {
+    content: '';
+    position: absolute;
+    top: 25px;
+    left: 30px;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    outline: 2px solid var(--cyan);
+    background: var(--cyan-deep);
+    transition: all 0.2s ease-in-out;
+  }
+  .about-photo-img,
+  .about-photo-overlay,
+  .about-photo-fallback {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+  }
+  .about-photo-img {
+    object-fit: cover;
+    object-position: center;
+  }
+  .about-photo-overlay {
+    background: var(--photo-overlay);
+    transition: all 0.2s ease-in-out;
+  }
+  .about-photo-fallback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--card);
+    font-family: var(--font-mono), ui-monospace, monospace;
+    font-size: 64px;
+    color: var(--cyan);
+  }
+  .about-photo:hover .about-photo-overlay,
+  .about-photo.is-active .about-photo-overlay {
+    opacity: 0;
+  }
+  .about-photo:hover::after,
+  .about-photo.is-active::after {
+    top: 15px;
+    left: 20px;
+  }
+  @media (max-width: 700px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media (max-width: 600px) {
+    .about-grid {
+      row-gap: 40px;
+    }
+    .about-text {
+      row-gap: 16px;
+    }
+    .about-tech li {
+      flex-basis: 100%;
+    }
+    .about-photo {
+      width: 220px;
+      height: 308px;
+    }
+    .about-photo::after {
+      top: 18px;
+      left: 22px;
+    }
+    .about-photo:hover::after,
+    .about-photo.is-active::after {
+      top: 12px;
+      left: 15px;
+    }
+  }
+
   .cursor-dot,
   .cursor-ring {
     position: fixed;
