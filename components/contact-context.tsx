@@ -1,19 +1,27 @@
 'use client'
 
-import { createContext, useCallback, useContext, useMemo, type ReactNode } from 'react'
+import { createContext, useCallback, useContext, useMemo, useState, type ReactNode } from 'react'
+import { ContactModal } from '@/components/contact-modal'
 
 type ContactContextValue = {
   openContact: () => void
+  closeContact: () => void
 }
 
 const ContactContext = createContext<ContactContextValue | null>(null)
 
 export function ContactProvider({ children }: { children: ReactNode }) {
-  // Stub until the Contact popup is built.
-  const openContact = useCallback(() => {}, [])
-  const value = useMemo(() => ({ openContact }), [openContact])
+  const [open, setOpen] = useState(false)
+  const openContact = useCallback(() => setOpen(true), [])
+  const closeContact = useCallback(() => setOpen(false), [])
+  const value = useMemo(() => ({ openContact, closeContact }), [openContact, closeContact])
 
-  return <ContactContext.Provider value={value}>{children}</ContactContext.Provider>
+  return (
+    <ContactContext.Provider value={value}>
+      {children}
+      {open && <ContactModal onClose={closeContact} />}
+    </ContactContext.Provider>
+  )
 }
 
 export function useContact() {

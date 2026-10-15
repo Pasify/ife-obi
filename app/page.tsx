@@ -1,49 +1,29 @@
-import { Section } from '@/components/section'
-import { SectionHeading } from '@/components/section-heading'
-import { Button } from '@/components/button'
-import { ThemeToggle } from '@/components/theme-toggle'
-
 import { Hero } from '@/components/hero'
 import { About } from '@/components/about'
 import { Skills } from '@/components/skills'
 import { Projects } from '@/components/projects'
 import { Experience } from '@/components/experience'
 import { Certificates } from '@/components/certificates'
-
-const placeholders = [
-  { num: '06', title: 'Get in touch' },
-]
+import { Contact } from '@/components/contact'
+import { EmailRail, SocialRail, SocialStrip } from '@/components/social-rail'
+import { SiteFooter } from '@/components/site-footer'
 
 export default function Page() {
   return (
-    <main id="content" className="shell">
-      <Hero />
-      <About />
-      <Skills />
-      <Experience />
-      <Certificates />
-      <Projects />
-      {placeholders.map(({ num, title }) => (
-        <Section
-          key={num}
-          aria-labelledby={`heading-${num}`}
-          className="flex min-h-screen flex-col justify-center gap-6"
-        >
-          <SectionHeading num={num} title={title} id={`heading-${num}`} />
-          <p className="max-w-xl leading-relaxed text-slate">
-            Placeholder content. Scroll to test the reveal, hover the buttons to test the cursor, and
-            toggle the theme to check both palettes.
-          </p>
-          <div className="glass flex max-w-xl flex-wrap items-center gap-6 rounded-card p-6">
-            <Button size="big">Resume</Button>
-            <Button size="small">small</Button>
-            <ThemeToggle />
-            <a href="#content" className="font-mono text-sm text-cyan-2 hover:underline">
-              inline link
-            </a>
-          </div>
-        </Section>
-      ))}
-    </main>
+    <>
+      <main id="content" className="shell">
+        <Hero />
+        <About />
+        <Skills />
+        <Experience />
+        <Certificates />
+        <Projects />
+        <Contact />
+        <SocialStrip />
+      </main>
+      <SiteFooter />
+      <SocialRail />
+      <EmailRail />
+    </>
   )
 }
