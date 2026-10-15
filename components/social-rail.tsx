@@ -1,23 +1,29 @@
-import { GithubIcon, LinkedinIcon, WhatsappIcon, XIcon } from '@/components/brand-icons'
-import { cn } from '@/lib/utils'
+import {
+  GithubIcon,
+  LinkedinIcon,
+  WhatsappIcon,
+  XIcon,
+} from "@/components/brand-icons";
+import { cn } from "@/lib/utils";
 
-const WHATSAPP = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '[[WHATSAPP_NUMBER]]'
-const EMAIL = 'ife.obi61@gmail.com'
+const WHATSAPP =
+  process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "[[WHATSAPP_NUMBER]]";
+const EMAIL = "ife.obi61@gmail.com";
 
 const SOCIALS = [
-  { label: 'GitHub', href: 'https://github.com/pasify', Icon: GithubIcon },
+  { label: "GitHub", href: "https://github.com/pasify", Icon: GithubIcon },
   {
-    label: 'LinkedIn',
-    href: 'https://www.linkedin.com/in/ifesinachi-obiora-b62b7a216',
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/ifesinachi-obiora-b62b7a216",
     Icon: LinkedinIcon,
   },
-  { label: 'X (Twitter)', href: 'https://twitter.com/paschalobiora_', Icon: XIcon },
-  { label: 'WhatsApp', href: `https://wa.me/${WHATSAPP}`, Icon: WhatsappIcon },
-]
+  // { label: 'X (Twitter)', href: 'https://twitter.com/paschalobiora_', Icon: XIcon },
+  { label: "WhatsApp", href: `https://wa.me/${WHATSAPP}`, Icon: WhatsappIcon },
+];
 
 function SocialLinks({ className }: { className?: string }) {
   return (
-    <ul className={cn('social-list', className)}>
+    <ul className={cn("social-list", className)}>
       {SOCIALS.map(({ label, href, Icon }) => (
         <li key={label}>
           <a
@@ -33,7 +39,7 @@ function SocialLinks({ className }: { className?: string }) {
         </li>
       ))}
     </ul>
-  )
+  );
 }
 
 export function SocialRail() {
@@ -42,7 +48,7 @@ export function SocialRail() {
       <SocialLinks />
       <span className="rail-line" aria-hidden="true" />
     </nav>
-  )
+  );
 }
 
 export function SocialStrip() {
@@ -50,7 +56,7 @@ export function SocialStrip() {
     <nav aria-label="Social links" className="social-strip">
       <SocialLinks className="glass" />
     </nav>
-  )
+  );
 }
 
 export function EmailRail() {
@@ -61,5 +67,5 @@ export function EmailRail() {
       </a>
       <span className="email-rail-line" aria-hidden="true" />
     </div>
-  )
+  );
 }
