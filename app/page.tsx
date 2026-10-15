@@ -7,10 +7,10 @@ import { Hero } from '@/components/hero'
 import { About } from '@/components/about'
 import { Skills } from '@/components/skills'
 import { Projects } from '@/components/projects'
+import { Experience } from '@/components/experience'
 
 const placeholders = [
-  { num: '03', title: 'Experience' },
-  { num: '05', title: 'Get in touch' },
+  { num: '06', title: 'Get in touch' },
 ]
 
 export default function Page() {
@@ -19,6 +19,7 @@ export default function Page() {
       <Hero />
       <About />
       <Skills />
+      <Experience />
       <Projects />
       {placeholders.map(({ num, title }) => (
         <Section
