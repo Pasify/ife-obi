@@ -3,8 +3,9 @@ import { SectionHeading } from '@/components/section-heading'
 import { Button } from '@/components/button'
 import { ThemeToggle } from '@/components/theme-toggle'
 
+import { Hero } from '@/components/hero'
+
 const placeholders = [
-  { num: '01', title: 'About me' },
   { num: '02', title: 'Experience' },
   { num: '03', title: 'Some things I have built' },
   { num: '04', title: 'Get in touch' },
@@ -13,6 +14,7 @@ const placeholders = [
 export default function Page() {
   return (
     <main id="content" className="shell">
+      <Hero />
       {placeholders.map(({ num, title }) => (
         <Section
           key={num}

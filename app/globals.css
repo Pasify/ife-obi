@@ -208,6 +208,148 @@
     font-size: 0.9375rem;
   }
 
+  .hero {
+    height: calc(100vh - 70px);
+    display: grid;
+    grid-auto-rows: max-content;
+    align-content: center;
+    justify-items: start;
+    padding: 20px 0;
+    margin-bottom: 50px;
+  }
+  .hero-greeting {
+    font-family: var(--font-mono), ui-monospace, monospace;
+    font-weight: 300;
+    font-size: 25px;
+    color: var(--cyan);
+  }
+  .hero-name {
+    display: inline-block;
+    max-width: 100%;
+    overflow-wrap: break-word;
+    font-weight: 700;
+    font-size: 70px;
+    line-height: 1.25;
+    background-image: linear-gradient(to right, var(--slate), var(--slate-light));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .hero-sub {
+    font-weight: 700;
+    font-size: 60px;
+    line-height: 1.25;
+    margin-top: -20px;
+    color: var(--slate);
+    text-wrap: balance;
+  }
+  .hero-desc {
+    width: 65%;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 1.5;
+    color: var(--slate);
+    margin-bottom: 40px;
+    text-wrap: pretty;
+  }
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .hero-item {
+    animation: hero-in 0.6s ease-out both;
+    animation-delay: var(--hero-delay, 0s);
+  }
+  @keyframes hero-in {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-item {
+      animation: none;
+    }
+  }
+
+  /* html is already 120% here, so rem-based buttons scale; hero px sizes are scaled explicitly. */
+  @media (min-width: 1801px) {
+    .hero-greeting {
+      font-size: 30px;
+    }
+    .hero-name {
+      font-size: 84px;
+    }
+    .hero-sub {
+      font-size: 72px;
+      margin-top: -24px;
+    }
+    .hero-desc {
+      font-size: 20.4px;
+      margin-bottom: 48px;
+    }
+    .hero-actions {
+      gap: 24px;
+    }
+  }
+  @media (max-width: 1200px) {
+    .hero {
+      margin-bottom: 0;
+    }
+    .hero-name {
+      font-size: 60px;
+    }
+    .hero-sub {
+      font-size: 50px;
+    }
+  }
+  @media (max-width: 900px) {
+    .hero-greeting {
+      font-size: 20px;
+    }
+    .hero-name {
+      font-size: 48px;
+    }
+    .hero-sub {
+      font-size: 36px;
+      margin-top: -12px;
+    }
+    .hero-desc {
+      font-size: 15px;
+      width: 80%;
+    }
+  }
+  @media (max-width: 600px) {
+    .hero {
+      height: 100vh;
+    }
+    .hero-greeting {
+      font-size: 19px;
+    }
+    .hero-name {
+      font-size: 46px;
+    }
+    .hero-sub {
+      font-size: 32px;
+      margin-top: -8px;
+    }
+    .hero-desc {
+      font-size: 16px;
+      width: 100%;
+    }
+    .hero-actions {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+    }
+  }
+
   .cursor-dot,
   .cursor-ring {
     position: fixed;

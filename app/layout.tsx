@@ -3,6 +3,7 @@ import type { Metadata, Viewport } from 'next'
 import { Poppins, Fira_Code } from 'next/font/google'
 import { ThemeProvider } from '@/components/theme-provider'
 import { Cursor } from '@/components/cursor'
+import { ContactProvider } from '@/components/contact-context'
 import { Particles } from '@/components/particles'
 import './globals.css'
 
@@ -56,7 +57,7 @@ export default function RootLayout({
           </a>
           <Particles />
           <Cursor />
-          {children}
+          <ContactProvider>{children}</ContactProvider>
         </ThemeProvider>
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
