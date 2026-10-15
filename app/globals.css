@@ -2110,11 +2110,151 @@
     text-decoration: none;
   }
 
+  /* Resume popup */
+  .resume-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.6);
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
+  }
+  .resume-panel {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: var(--card);
+    border-radius: 10px;
+    width: calc(100% - 32px);
+    max-width: 880px;
+    height: min(90vh, 900px);
+    text-align: left;
+    animation: contact-appear 0.3s ease-in;
+  }
+  .resume-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--line);
+  }
+  .resume-heading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+  }
+  .resume-heading-icon {
+    flex-shrink: 0;
+    color: var(--cyan);
+  }
+  .resume-title {
+    font-family: var(--font-primary), ui-sans-serif, sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--slate-light);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .resume-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+  .resume-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  @media (max-width: 600px) {
+    .resume-action-newtab {
+      display: none;
+    }
+    .resume-header {
+      padding: 12px 14px;
+    }
+  }
+  .resume-close {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    background: transparent;
+    border: none;
+    color: var(--slate);
+    cursor: pointer;
+    transition: color 0.2s ease;
+  }
+  .resume-close:hover,
+  .resume-close:focus-visible {
+    color: var(--cyan);
+  }
+  .resume-close:focus-visible {
+    outline: 2px solid var(--cyan);
+  }
+  .resume-body {
+    position: relative;
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    background: #525659;
+  }
+  .resume-frame {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+  }
+  .resume-fallback {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 24px;
+    text-align: center;
+    color: #f1f3f4;
+  }
+  .resume-fallback-icon {
+    color: rgba(241, 243, 244, 0.7);
+  }
+  .resume-fallback-text {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  .resume-fallback-note {
+    font-size: 14px;
+    color: rgba(241, 243, 244, 0.75);
+  }
+  .resume-fallback-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 12px;
+  }
+  .resume-fallback .btn {
+    color: #64ffda;
+    border-color: #64ffda;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .cta-btn:hover,
     .cta-btn:focus-visible {
       animation: none;
     }
+    .resume-panel,
     .contact-panel,
     .contact-success-icon {
       animation: none;
