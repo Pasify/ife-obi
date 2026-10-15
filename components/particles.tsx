@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useTheme } from 'next-themes'
 
 type Particle = { x: number; y: number; vx: number; vy: number; r: number; a: number }
@@ -10,6 +10,7 @@ const rand = (min: number, max: number) => Math.random() * (max - min) + min
 export function Particles() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const colorRef = useRef('')
+  const [enabled, setEnabled] = useState(false)
   const { resolvedTheme } = useTheme()
 
   useEffect(() => {
@@ -17,10 +18,18 @@ export function Particles() {
   }, [resolvedTheme])
 
   useEffect(() => {
+    const query = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const update = () => setEnabled(!query.matches)
+    update()
+    query.addEventListener('change', update)
+    return () => query.removeEventListener('change', update)
+  }, [])
+
+  useEffect(() => {
+    if (!enabled) return
     const canvas = canvasRef.current
     const ctx = canvas?.getContext('2d')
     if (!canvas || !ctx) return
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
 
     const count = window.matchMedia('(pointer: coarse)').matches ? 20 : 40
     let width = 0
@@ -82,7 +91,9 @@ export function Particles() {
       window.removeEventListener('resize', resize)
       document.removeEventListener('visibilitychange', onVisibility)
     }
-  }, [])
+  }, [enabled])
+
+  if (!enabled) return null
 
   return (
     <canvas

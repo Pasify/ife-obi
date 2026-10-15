@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState, type MouseEvent, type Ref } from 'react'
+import Image from 'next/image'
 import { Award, Eye } from 'lucide-react'
 import type { Certificate } from '@/data/certificates'
 import { cn } from '@/lib/utils'
@@ -68,13 +69,13 @@ export function CertificateCard({ certificate, onOpen, ref }: CertificateCardPro
       aria-label={`View certificate: ${title}, ${issuer}`}
     >
       <span className="cert-reveal" aria-hidden="true">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+        <Image
           ref={imgRef}
           src={image}
           alt=""
+          fill
+          sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 400px"
           className="cert-reveal-img"
-          loading="lazy"
           onLoad={() => setImageReady(true)}
           onError={() => setImageReady(false)}
         />

@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import Image from 'next/image'
 import { cn } from '@/lib/utils'
 
 export function ProfilePhoto() {
@@ -41,11 +42,13 @@ export function ProfilePhoto() {
         </div>
       ) : (
         <>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <Image
             ref={imgRef}
             src="/profile.jpg"
             alt="Portrait of Ifesinachi Obiora"
+            fill
+            priority
+            sizes="(max-width: 600px) 220px, 250px"
             className="about-photo-img"
             onError={() => setMissing(true)}
           />

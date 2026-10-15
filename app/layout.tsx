@@ -2,10 +2,17 @@ import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { Poppins, Fira_Code } from 'next/font/google'
 import { ThemeProvider } from '@/components/theme-provider'
-import { Cursor } from '@/components/cursor'
 import { ContactProvider } from '@/components/contact-context'
-import { Particles } from '@/components/particles'
+import { AmbientEffects } from '@/components/ambient-effects'
 import { ScrollProgress } from '@/components/scroll-progress'
+import {
+  GITHUB_URL,
+  LINKEDIN_URL,
+  SITE_DESCRIPTION,
+  SITE_NAME,
+  SITE_TITLE,
+  SITE_URL,
+} from '@/lib/site'
 import './globals.css'
 
 const poppins = Poppins({
@@ -22,19 +29,39 @@ const firaCode = Fira_Code({
   display: 'swap',
 })
 
-const title = 'Ifesinachi Obiora | Full-Stack Software Developer'
-const description =
-  'Full-stack developer building web and mobile products with React, React Native and Node.js.'
-
 export const metadata: Metadata = {
-  title,
-  description,
-  openGraph: { title, description, type: 'website' },
+  metadataBase: new URL(SITE_URL),
+  title: SITE_TITLE,
+  description: SITE_DESCRIPTION,
+  applicationName: SITE_NAME,
+  authors: [{ name: SITE_NAME, url: SITE_URL }],
+  creator: SITE_NAME,
+  alternates: { canonical: '/' },
+  openGraph: {
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    url: '/',
+    siteName: SITE_NAME,
+    type: 'profile',
+    locale: 'en_US',
+  },
+  twitter: { card: 'summary_large_image', title: SITE_TITLE, description: SITE_DESCRIPTION },
+  robots: { index: true, follow: true },
   icons: { icon: '/logo.png', apple: '/logo.png' },
 }
 
 export const viewport: Viewport = {
   themeColor: '#0a192f',
+}
+
+const personJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: SITE_NAME,
+  jobTitle: 'Full-Stack Software Developer',
+  url: SITE_URL,
+  image: `${SITE_URL}/profile.jpg`,
+  sameAs: [GITHUB_URL, LINKEDIN_URL],
 }
 
 export default function RootLayout({
@@ -49,6 +76,10 @@ export default function RootLayout({
       className={`${poppins.variable} ${firaCode.variable} bg-background`}
     >
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd).replace(/</g, '\\u003c') }}
+        />
         <ThemeProvider>
           <a
             href="#content"
@@ -57,8 +88,7 @@ export default function RootLayout({
             Skip to content
           </a>
           <ScrollProgress />
-          <Particles />
-          <Cursor />
+          <AmbientEffects />
           <ContactProvider>{children}</ContactProvider>
         </ThemeProvider>
         {process.env.NODE_ENV === 'production' && <Analytics />}

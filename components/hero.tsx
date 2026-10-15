@@ -31,9 +31,9 @@ export function Hero() {
       <h1 className="hero-name hero-item" style={stagger(2)}>
         Ifesinachi Obiora,
       </h1>
-      <h2 className="hero-sub hero-item" style={stagger(3)}>
+      <p className="hero-sub hero-item" style={stagger(3)}>
         I build full-stack products.
-      </h2>
+      </p>
       <p className="hero-desc hero-item" style={stagger(4)}>
         {
           "I'm a full-stack developer with 3+ years of experience shipping web and mobile products with React, React Native and Node.js. I enjoy turning ideas into clean, fast, accessible interfaces, from discovery through launch."

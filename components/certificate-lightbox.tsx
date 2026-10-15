@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
+import Image from 'next/image'
 import { ChevronLeft, ChevronRight, X } from 'lucide-react'
 import { Button } from '@/components/button'
 import type { Certificate } from '@/data/certificates'
@@ -133,10 +134,12 @@ export function CertificateLightbox({
             {imageMissing ? (
               <p className="lightbox-missing">Certificate image coming soon.</p>
             ) : (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
+              <Image
                 key={cert.image}
                 src={cert.image}
+                width={1600}
+                height={1131}
+                sizes="(max-width: 960px) 100vw, 872px"
                 alt={`${cert.title} certificate issued by ${cert.issuer}`}
                 className="lightbox-img"
                 onError={() => setFailedImage(cert.image)}
