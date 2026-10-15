@@ -5,6 +5,7 @@ import { ThemeProvider } from '@/components/theme-provider'
 import { Cursor } from '@/components/cursor'
 import { ContactProvider } from '@/components/contact-context'
 import { Particles } from '@/components/particles'
+import { ScrollProgress } from '@/components/scroll-progress'
 import './globals.css'
 
 const poppins = Poppins({
@@ -55,6 +56,7 @@ export default function RootLayout({
           >
             Skip to content
           </a>
+          <ScrollProgress />
           <Particles />
           <Cursor />
           <ContactProvider>{children}</ContactProvider>

@@ -16,21 +16,30 @@ export function Hero() {
 
   return (
     <header id="header" className="hero">
-      <p className="hero-greeting hero-item" style={stagger(0)}>
+      <button
+        type="button"
+        className="hero-badge hero-item"
+        style={stagger(0)}
+        onClick={openContact}
+      >
+        <span className="hero-badge-dot" aria-hidden="true" />
+        <span>Open to new opportunities</span>
+      </button>
+      <p className="hero-greeting hero-item" style={stagger(1)}>
         {'Hi👋, my name is'}
       </p>
-      <h1 className="hero-name hero-item" style={stagger(1)}>
+      <h1 className="hero-name hero-item" style={stagger(2)}>
         Ifesinachi Obiora,
       </h1>
-      <h2 className="hero-sub hero-item" style={stagger(2)}>
+      <h2 className="hero-sub hero-item" style={stagger(3)}>
         I build full-stack products.
       </h2>
-      <p className="hero-desc hero-item" style={stagger(3)}>
+      <p className="hero-desc hero-item" style={stagger(4)}>
         {
           "I'm a full-stack developer with 3+ years of experience shipping web and mobile products with React, React Native and Node.js. I enjoy turning ideas into clean, fast, accessible interfaces, from discovery through launch."
         }
       </p>
-      <div className="hero-actions hero-item" style={stagger(4)}>
+      <div className="hero-actions hero-item" style={stagger(5)}>
         <Button size="big" variant="outline" onClick={scrollToAbout}>
           {'Find out more ↓'}
         </Button>

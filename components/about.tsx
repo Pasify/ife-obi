@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { Section } from '@/components/section'
 import { SectionHeading } from '@/components/section-heading'
 import { ProfilePhoto } from '@/components/profile-photo'
+import { ResultsStrip } from '@/components/results-strip'
 
 const technologies = [
   'JavaScript',
@@ -69,6 +70,7 @@ export function About() {
         </div>
         <ProfilePhoto />
       </div>
+      <ResultsStrip />
     </Section>
   )
 }

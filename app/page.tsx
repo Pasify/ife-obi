@@ -5,11 +5,12 @@ import { ThemeToggle } from '@/components/theme-toggle'
 
 import { Hero } from '@/components/hero'
 import { About } from '@/components/about'
+import { Skills } from '@/components/skills'
 
 const placeholders = [
-  { num: '02', title: 'Experience' },
-  { num: '03', title: 'Some things I have built' },
-  { num: '04', title: 'Get in touch' },
+  { num: '03', title: 'Experience' },
+  { num: '04', title: 'Some things I have built' },
+  { num: '05', title: 'Get in touch' },
 ]
 
 export default function Page() {
@@ -17,6 +18,7 @@ export default function Page() {
     <main id="content" className="shell">
       <Hero />
       <About />
+      <Skills />
       {placeholders.map(({ num, title }) => (
         <Section
           key={num}
